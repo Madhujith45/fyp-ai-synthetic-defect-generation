@@ -1,0 +1,23 @@
+# Google Colab CUDA Configuration for Stable Diffusion img2img Defect Generation POC.
+#
+# Usage in Google Colab (GPU runtime):
+#   python scripts/generate.py --config configs/generation_colab.yaml
+
+# --- Input / Output ---
+input_image_path: "data/raw/casting_512x512/casting_512x512/ok_front/cast_ok_0_1018.jpeg"
+prompt: "Add a small realistic surface crack on the casting."
+negative_prompt: "blurry, low quality, distorted geometry, warped shape, cartoon, drawing, deformed casting, extra holes, changing object shape"
+output_dir: "outputs/generation"
+
+# --- Backend ---
+backend: "stable_diffusion"
+model_id: "runwayml/stable-diffusion-v1-5"
+device: "cuda"
+
+# --- Hyperparameters ---
+num_inference_steps: 30
+guidance_scale: 7.5
+strength: 0.38        # 0.35-0.40 preserves casting geometry and contours while etching realistic crack
+seed: 42
+num_images: 1
+image_size: [512, 512]

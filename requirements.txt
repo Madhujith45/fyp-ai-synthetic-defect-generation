@@ -1,0 +1,17 @@
+numpy
+pandas
+opencv-python
+Pillow
+matplotlib
+scikit-image
+scikit-learn
+PyYAML
+tqdm
+pytest
+torch
+torchvision
+diffusers
+transformers
+accelerate
+safetensors
+huggingface-hub

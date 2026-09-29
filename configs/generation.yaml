@@ -1,0 +1,30 @@
+# Default generation config for POC testing with the casting dataset.
+#
+# Backend options:
+#   "mock"              — No ML model, uses synthetic noise overlay (runs anywhere).
+#   "stable_diffusion"  — Uses SD 1.5 img2img via diffusers (requires CUDA GPU).
+#
+# To run with mock backend (current machine):
+#   python scripts/generate.py
+#
+# To run with Stable Diffusion (CUDA machine):
+#   python scripts/generate.py --backend stable_diffusion --device cuda
+
+# --- Input / Output ---
+input_image_path: "data/raw/casting_512x512/casting_512x512/ok_front/cast_ok_0_1018.jpeg"
+prompt: "Add a small realistic surface crack on the casting"
+negative_prompt: "blurry, cartoon, drawing, low quality, deformed"
+output_dir: "outputs/generation"
+
+# --- Backend ---
+backend: "mock"
+model_id: "runwayml/stable-diffusion-v1-5"
+device: "cpu"
+
+# --- Inference Hyperparameters ---
+num_inference_steps: 30
+guidance_scale: 7.5
+strength: 0.4        # Lower = preserves more structure (0.3-0.5 recommended for defects)
+seed: 42
+num_images: 1
+image_size: [512, 512]
